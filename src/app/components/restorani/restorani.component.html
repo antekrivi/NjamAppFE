@@ -1,0 +1,32 @@
+<div>
+  <label for="filter">Filtriraj restorane:</label>
+  <input id="filter" type="text" [(ngModel)]="filterText" placeholder="Unesite ime restorana" />
+  <button (click)="onPretraziClick()">Pretraži</button>
+</div>
+<table>
+    <caption>Restorani</caption>
+    
+    <thead>
+      <tr>
+        <th>Ime</th>
+        <th>Otvoren</th>
+        <th>Opterećenost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let restoran of filteredRestorani" (click)="onRestoranClick(restoran)">
+        <td>{{ restoran.imeRestorana }}</td>
+        <td>{{ restoran.trenutnoOtvoreno ? 'Da' : 'Ne' }}</td>
+        <td>
+          <span class="status" [ngClass]="getOpterecenostClass(restoran.postotakOpterecenosti)">
+           {{ getOpterecenostText(restoran.postotakOpterecenosti) }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="odabraniRestoran" class="details">
+    <hr />
+    <p><strong>Radno vrijeme:</strong> 08:00 – 24:00</p>
+    <p><strong>Adresa:</strong> {{ odabraniRestoran.adresa }}</p>
+  </div>
