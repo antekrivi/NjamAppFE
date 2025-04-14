@@ -1,0 +1,24 @@
+.initial-screen {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .initial-screen a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .initial-screen a:hover {
+    background-color: #0056b3;
+  }
+  
+  .initial-screen a:active {
+    background-color: #003f7f;
+  }

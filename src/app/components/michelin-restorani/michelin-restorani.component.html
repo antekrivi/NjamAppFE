@@ -1,0 +1,31 @@
+<div class="filter-container">
+    <label for="filter" class="filter-label">Filtriraj restorane:</label>
+    <input id="filter" type="text" [(ngModel)]="filterText" placeholder="Unesite ime restorana" class="filter-input" />
+    <button (click)="onPretraziClick()" class="filter-button">Pretraži</button>
+    <button routerLink="/home" class="home-button">Idi na početnu stranicu</button>
+</div>
+<table>
+    <caption class="table-caption">Restorani</caption>
+    <thead>
+        <tr>
+            <th>Ime</th>
+            <th>Otvoren</th>
+            <th>Opterećenost</th>
+            <th>Obriši:</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let restoran of filteredRestorani" (click)="onRestoranClick(restoran)" class="restaurant-row">
+            <td>{{ restoran.imeRestorana }}</td>
+            <td>{{ restoran.trenutnoOtvoreno ? 'Da' : 'Ne' }}</td>
+            <td>
+                <span class="status" [ngClass]="getOpterecenostClass(restoran.postotakOpterecenosti)">
+                    {{ getOpterecenostText(restoran.postotakOpterecenosti) }}
+                </span>
+            </td>
+            <td>
+                <button (click)="onDeleteClick(restoran); $event.stopPropagation()" class="delete-button">Obriši</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

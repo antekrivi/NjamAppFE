@@ -35,13 +35,19 @@ export class RestoranService {
       catchError(this.handleError<Restoran>(`getRestoranById id=${id}`))
     );
   }
-  
   getFullRestoran(id: number): Observable<Restoran> {
     const params = {id: id};
     return this.http.get<Restoran>(`${this.restoraniUrl}/full`, {params})
     .pipe(
       tap(_ => console.log(`fetched restoran id=${id}`)),
       catchError(this.handleError<Restoran>(`getRestoranById id=${id}`))
+    );
+  }
+  getMichelinRestorani(): Observable<Restoran[]> {
+    return this.http.get<Restoran[]>(`${this.restoraniUrl}/michelin`)
+    .pipe(
+      tap(_ => console.log('fetched restorani')),
+      catchError(this.handleError<Restoran[]>('getRestorani', []))
     );
   }
 

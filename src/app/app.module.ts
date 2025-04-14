@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { RestoranDetaljiComponent } from './components/restoran-detalji/restoran-detalji.component';
 import { provideHttpClient } from '@angular/common/http';
+import { MichelinRestoraniComponent } from './components/michelin-restorani/michelin-restorani.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { provideHttpClient } from '@angular/common/http';
     SortRestoraniPipe,
     HomeComponent,
     RestoranDetaljiComponent,
+    MichelinRestoraniComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,8 @@
-<div>
-  <label for="filter">Filtriraj restorane:</label>
-  <input id="filter" type="text" [(ngModel)]="filterText" placeholder="Unesite ime restorana" />
-  <button (click)="onPretraziClick()">Pretraži</button>
+<div class="filter-container">
+  <label for="filter" class="filter-label">Filtriraj restorane:</label>
+  <input id="filter" type="text" [(ngModel)]="filterText" placeholder="Unesite ime restorana" class="filter-input" />
+  <button (click)="onPretraziClick()" class="filter-button">Pretraži</button>
+  <button routerLink="/home" class="home-button">Idi na početnu stranicu</button>
 </div>
 <table>
     <caption>Restorani</caption>
@@ -30,8 +31,8 @@
     </tbody>
 </table>
 
-<h2>Dodaj restoran:</h2>
 <form [formGroup]="restoranForm" (ngSubmit)="onSubmit()">
+  <h2>Dodaj restoran:</h2>
   <label>Ime restorana: <input type="text" formControlName="imeRestorana"></label><br>
   <label>Adresa: <input type="text" formControlName="adresa"></label><br>
   <label>Broj telefona: <input type="text" formControlName="brojTelefona"></label><br>
