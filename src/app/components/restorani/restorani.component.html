@@ -11,6 +11,7 @@
         <th>Ime</th>
         <th>Otvoren</th>
         <th>Opterećenost</th>
+        <th>Obriši:</th>
       </tr>
     </thead>
     <tbody>
@@ -22,11 +23,37 @@
            {{ getOpterecenostText(restoran.postotakOpterecenosti) }}
           </span>
         </td>
+        <td>
+          <button (click)="onDeleteClick(restoran); $event.stopPropagation()">Obriši</button>
+        </td>
       </tr>
     </tbody>
-  </table>
-  <div *ngIf="odabraniRestoran" class="details">
-    <hr />
-    <p><strong>Radno vrijeme:</strong> 08:00 – 24:00</p>
-    <p><strong>Adresa:</strong> {{ odabraniRestoran.adresa }}</p>
-  </div>
+</table>
+
+<h2>Dodaj restoran:</h2>
+<form [formGroup]="restoranForm" (ngSubmit)="onSubmit()">
+  <label>Ime restorana: <input type="text" formControlName="imeRestorana"></label><br>
+  <label>Adresa: <input type="text" formControlName="adresa"></label><br>
+  <label>Broj telefona: <input type="text" formControlName="brojTelefona"></label><br>
+  <label>Email: <input type="email" formControlName="email"></label><br>
+  <label>Kratki opis: <input type="text" formControlName="kratkiOpis"></label><br>
+  <label>Postotak opterećenosti: <input type="number" formControlName="postotakOpterecenosti" min="0" max="100"></label><br>
+  <label>Prosječno vrijeme dostave (min): <input type="number" formControlName="prosVrijemeDostave" min="0"></label><br>
+  <label>Prosječna ocjena kupca: <input type="number" formControlName="prosOcjenaKupca" step="0.1" min="1" max="5"></label><br>
+  <label>Maksimalan broj narudžbi: <input type="number" formControlName="maxBrojNarudzbi" min="0"></label><br>
+  <label>Michelin zvjezdice: <input type="number" formControlName="michelinZvijezdice" min="0" max="3"></label><br>
+  <label>Trenutno otvoreno: <input type="checkbox" formControlName="trenutnoOtvoreno"></label><br>
+
+  <fieldset formGroupName="radnoVrijeme">
+    <legend>Radno vrijeme:</legend>
+    <label>Ponedjeljak: <input type="text" formControlName="Monday"></label><br>
+    <label>Utorak: <input type="text" formControlName="Tuesday"></label><br>
+    <label>Srijeda: <input type="text" formControlName="Wednesday"></label><br>
+    <label>Četvrtak: <input type="text" formControlName="Thursday"></label><br>
+    <label>Petak: <input type="text" formControlName="Friday"></label><br>
+    <label>Subota: <input type="text" formControlName="Saturday"></label><br>
+    <label>Nedjelja: <input type="text" formControlName="Sunday"></label><br>
+  </fieldset>
+
+  <button type="submit" [disabled]="restoranForm.invalid">Dodaj restoran</button>
+</form>

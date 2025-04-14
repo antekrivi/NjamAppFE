@@ -1,0 +1,61 @@
+<div *ngIf="restoran">
+    <h2>{{ restoran.imeRestorana }}</h2>
+    <p><strong>ID:</strong> {{ restoran.id }}</p>
+    <p><strong>Ime:</strong> {{ restoran.imeRestorana }}</p>
+    <p><strong>Adresa:</strong> {{ restoran.adresa }}</p>
+    <p><strong>Trenutno otvoreno:</strong> {{ restoran.trenutnoOtvoreno ? 'Da' : 'Ne'}}</p>
+    <p><strong>Postotak opterećenosti:</strong> {{ restoran.postotakOpterecenosti }}%</p>
+    <p><strong>Broj zvjezdica:</strong> {{ restoran.michelinZvijezdice }}</p>
+    <p><strong>Radno vrijeme:</strong></p>
+    <ul>
+        <li *ngFor="let rv of radnoVrijeme">
+            {{ rv.dan }} : {{ rv.vrijeme}}
+        </li>
+    </ul>
+</div>
+<div *ngIf="restoran">
+    <h2>Uredi restoran</h2>
+    <form (ngSubmit)="onSubmit()" #restoranForm="ngForm">
+      <label>
+        Ime restorana:
+        <input type="text" name="imeRestorana" [(ngModel)]="restoran.imeRestorana" required />
+      </label><br />
+  
+      <label>
+        Adresa:
+        <input type="text" name="adresa" [(ngModel)]="restoran.adresa" required />
+      </label><br />
+  
+      <label>
+        Trenutno otvoreno:
+        <input type="checkbox" name="trenutnoOtvoreno" [(ngModel)]="restoran.trenutnoOtvoreno" />
+      </label><br />
+  
+      <label>
+        Postotak opterećenosti:
+        <input type="number" name="postotakOpterecenosti" [(ngModel)]="restoran.postotakOpterecenosti" min="0" max="100" />
+      </label><br />
+  
+      <label>
+        Michelin zvjezdice:
+        <input type="number" name="michelinZvijezdice" [(ngModel)]="restoran.michelinZvijezdice" min="0" max="3" />
+      </label><br />
+  
+      <fieldset>
+        <legend>Radno vrijeme:</legend>
+        <div *ngFor="let dan of dani; let i = index">
+          <label>{{ dan }}:
+            <input
+              type="text"
+              [(ngModel)]="radnoVrijeme[i].vrijeme"
+              name="vrijeme-{{i}}"
+            />
+          </label>
+        </div>
+      </fieldset><br />
+  
+      <button type="submit">Spremi</button>
+      <buton routerLink="/restorani">Odustani</buton>
+    </form>
+  </div>
+  

@@ -5,21 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RestoraniComponent } from './components/restorani/restorani.component';
 import { SortRestoraniPipe } from './pipes/sort-restorani.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './components/home/home.component';
+import { RestoranDetaljiComponent } from './components/restoran-detalji/restoran-detalji.component';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     RestoraniComponent,
-    SortRestoraniPipe
+    SortRestoraniPipe,
+    HomeComponent,
+    RestoranDetaljiComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+    provideHttpClient()
   ],
   bootstrap: [AppComponent]
 })

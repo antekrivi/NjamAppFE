@@ -4,7 +4,6 @@ export interface RestoranDTO {
     adresa: string;
     trenutnoOtvoreno: boolean;
     postotakOpterecenosti: number;
-    brojZvijezdica: number;
-    tipKuhinje: string;
-    brojStolova: number;
+    michelinZvijezdice: number;
+    radnoVrijeme: Map<string, string>;
 }
