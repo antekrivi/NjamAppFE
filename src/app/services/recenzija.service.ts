@@ -25,4 +25,16 @@ export class RecenzijaService {
     const params = {restoranId: id};
     return this.http.get<Recenzija[]>(this.recenzijeUrl, {params});
   }
+
+  deleteRecenzija(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.recenzijeUrl}/${id}`);
+  }
+
+  editRecenzija(recenzija: Recenzija): Observable<Recenzija> {
+    return this.http.put<Recenzija>(`${this.recenzijeUrl}/${recenzija.id}`, recenzija, this.httpOptions);
+  }
+  
+  spremiRecenziju(recenzija: Recenzija): Observable<Recenzija> {
+    return this.http.post<Recenzija>(this.recenzijeUrl, recenzija, this.httpOptions);
+  }
 }

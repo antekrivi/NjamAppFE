@@ -63,4 +63,17 @@ export class NotificationService {
       this.router.navigate(['/login']);
     });
   }
+  confirmDelete(title: string, text: string): Promise<boolean> {
+  return Swal.fire({
+    title: title,
+    text: text,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Da, obriši!',
+    cancelButtonText: 'Odustani'
+  }).then((result) => result.isConfirmed);
+}
+
 }

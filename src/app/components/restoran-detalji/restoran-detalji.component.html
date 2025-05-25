@@ -15,6 +15,7 @@
               {{ rv.dan }} : {{ rv.vrijeme}}
           </li>
       </ul>
+
         <div class="recenzije">
           <h3>Recenzije</h3>
           <div *ngIf="recenzije && recenzije.length > 0; else nemaRecenzija">
@@ -22,12 +23,42 @@
               <h3><strong>Naslov:</strong> {{ rec.naslov }}</h3>
               <p><strong>Ocjena:</strong> {{ rec.ocjena }}/5</p>
               <p><strong>Tekst:</strong> {{ rec.tekst }}</p>
+              
+              <button (click)="onEdit(rec)">Uredi</button>
+              <button (click)="onDelete(rec)">Obriši</button>
             </div>
           </div>
           <ng-template #nemaRecenzija>
             <p>Još nema recenzija za ovaj restoran.</p>
           </ng-template>
         </div>
+
+        <div *ngIf="recenzijaZaEdit" class="uredi-recenziju-forma">
+        <h3>Uredi recenziju</h3>
+        <form (ngSubmit)="onUpdateRecenzija()" #recenzijaForm="ngForm">
+          <label>
+            Naslov:
+            <input type="text" name="naslov" [(ngModel)]="recenzijaZaEdit.naslov" required />
+          </label><br />
+
+          <label>
+            Ocjena:
+            <input type="number" name="ocjena" [(ngModel)]="recenzijaZaEdit.ocjena" min="1" max="5" required />
+          </label><br />
+
+          <label>
+            Tekst:
+            <textarea name="tekst" [(ngModel)]="recenzijaZaEdit.tekst" required></textarea>
+          </label><br />
+
+          <button type="submit">Spremi promjene</button>
+          <button type="button" (click)="recenzijaZaEdit = null">Odustani</button>
+        </form>
+      </div>
+
+        
+        
+      
     </div>
   <div *ngIf="restoran" class="uredi-forma">
       <h2>Uredi restoran</h2>

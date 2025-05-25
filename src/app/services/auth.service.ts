@@ -19,11 +19,9 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   login(username: string, password: string) {
-    //const authRequestDTO: AuthRequestDTO = {username, password};
-    //return this.http.post<AuthRequestDTO>(this.loginUrl, authRequestDTO);
     return this.http.post<Jwt>(`${this.loginUrl}`, { username, password }).pipe(
       tap(response => {
-        localStorage.setItem('token', response.accesToken);
+        localStorage.setItem('accessToken', response.accesToken);
         localStorage.setItem('refreshToken', response.refreshToken);
         localStorage.setItem('username', username);
         this.loggedIn = true;
@@ -32,7 +30,6 @@ export class AuthService {
   }
 
   logout() {
-    //return this.http.post(`${this.logoutUrl}`, username);
     const refreshToken = localStorage.getItem('refreshToken');
     this.http.post(`${this.logoutUrl}`, {token: refreshToken}).subscribe({
       next: () => {
@@ -69,13 +66,13 @@ export class AuthService {
 
     const body = {
       refreshToken: refreshToken,
-      expiredAccessToken: localStorage.getItem('token')
+      expiredAccessToken: localStorage.getItem('accessToken')
     };
 
     return this.http.post<any>(`${this.refreshTokenUrl}`, body).pipe(
       tap(response => {
         if (response && response.tokens) {
-          localStorage.setItem('token', response.tokens.accessToken);
+          localStorage.setItem('accessToken', response.tokens.accessToken);
           localStorage.setItem('refreshToken', response.tokens.refreshToken);
         }
       })

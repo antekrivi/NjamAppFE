@@ -5,6 +5,7 @@ import { RestoranService } from '../../services/restoran.service';
 import { RestoranDTO } from '../../interfaces/restoranDTO';
 import { RecenzijaService } from '../../services/recenzija.service';
 import { Recenzija } from '../../interfaces/recenzija';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-restoran-detalji',
@@ -19,9 +20,13 @@ export class RestoranDetaljiComponent implements OnInit {
   dani: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   restoranZaEdit!: Restoran;
   recenzije!: Array<Recenzija>;
+  recenzijaZaEdit: Recenzija | null = null;
+
 
   constructor(private route: ActivatedRoute,
-    private restoranService: RestoranService, private recenzijaService : RecenzijaService){  }
+    private restoranService: RestoranService,
+    private recenzijaService : RecenzijaService,
+    private notificationService: NotificationService){  }
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -89,4 +94,44 @@ export class RestoranDetaljiComponent implements OnInit {
       }
     });
   }
+
+  onDelete(recenzija: Recenzija): void {
+    this.notificationService.confirmDelete('Potvrdi brisanje', 'Jeste li sigurni da želite obrisati ovu recenziju?').then((result) => {
+      if (result) {
+        this.recenzijaService.deleteRecenzija(recenzija.id).subscribe({
+          next: () => {
+            this.notificationService.successNotification('Uspješno obrisano', 'Recenzija je uspješno obrisana.');
+            this.getRecenzije();
+          },
+          error: (error) => {
+            console.error('Error deleting review:', error);
+            this.notificationService.errorNotification('Greška', 'Došlo je do greške prilikom brisanja recenzije.');
+          }
+        });
+      }
+    });     
+  }
+
+  onEdit(rec: Recenzija): void {
+    this.recenzijaZaEdit = { ...rec }; // kopija kako bi izbjegao direktnu promjenu u listi
+  }
+  onUpdateRecenzija(): void {
+    if (!this.recenzijaZaEdit) return;
+    console.log('Ažuriram recenziju:', this.recenzijaZaEdit);
+    
+    this.recenzijaService.editRecenzija(this.recenzijaZaEdit).subscribe({
+      next: () => {
+        this.notificationService.successNotification('Uspješno', 'Recenzija je ažurirana.');
+        this.recenzijaZaEdit = null;
+        this.getRecenzije();
+      },
+      error: (error) => {
+        console.error('Error updating review:', error);
+        this.notificationService.errorNotification('Greška', 'Neuspješno ažuriranje recenzije.');
+      }
+    });
 }
+
+
+}
+
