@@ -6,29 +6,56 @@ body {
     margin: 0;
     padding: 20px;
   }
-  .container{
-    max-width: 50%;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  /* Kontejneri */
-  .restoran-detalji, .uredi-forma {
-    max-width: 800px;
-    margin: 30px auto;
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Naslovi */
+  .container {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: flex-start;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.restoran-detalji,
+.uredi-forma {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.recenzije {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.recenzije h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.recenzija {
+  background-color: #f8f8f8;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.recenzija p {
+  margin: 4px 0;
+}
+
+
   h2 {
     text-align: center;
     color: #2c3e50;
     margin-bottom: 25px;
   }
   
-  /* Paragrafi i lista */
   p {
     font-size: 16px;
     margin: 8px 0;

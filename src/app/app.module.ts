@@ -10,6 +10,9 @@ import { HomeComponent } from './components/home/home.component';
 import { RestoranDetaljiComponent } from './components/restoran-detalji/restoran-detalji.component';
 import { provideHttpClient } from '@angular/common/http';
 import { MichelinRestoraniComponent } from './components/michelin-restorani/michelin-restorani.component';
+import { LoginComponent } from './components/login/login.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -19,16 +22,21 @@ import { MichelinRestoraniComponent } from './components/michelin-restorani/mich
     HomeComponent,
     RestoranDetaljiComponent,
     MichelinRestoraniComponent,
+    LoginComponent,
+    NavbarComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ],
   providers: [
     provideClientHydration(withEventReplay()),
     provideHttpClient()
+    
   ],
   bootstrap: [AppComponent]
 })

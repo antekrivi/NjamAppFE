@@ -36,6 +36,8 @@ export class RestoraniComponent implements OnInit {
         maxBrojNarudzbi: [0, Validators.required],
         michelinZvijezdice: [0, Validators.required],
         trenutnoOtvoreno: [true, Validators.required],
+        brojStolova: [1, Validators.required],
+        godinaOsnivanja: [2025, Validators.required],
         radnoVrijeme: this.fb.group({
           Monday: ['10-22'],
           Tuesday: ['10-22'],
@@ -89,6 +91,26 @@ export class RestoraniComponent implements OnInit {
 
   getRestorani(): void {
     this.restorani$ = this.restoranService.getRestoraniWithDTO().pipe(
+      map(restorani => this.restoranService.sortRestorani(restorani, 'asc'))
+    );
+    this.restorani$.subscribe(restorani => {
+      this.filteredRestorani = restorani.filter(restoran =>
+        restoran.imeRestorana.toLowerCase().includes(this.filterText.toLowerCase())
+      );
+    });
+  }
+  prikaziOtvoreneRestorane(): void {
+    this.restorani$ = this.restoranService.getTrenutnoOtvoreniRestorani().pipe(
+      map(restorani => this.restoranService.sortRestorani(restorani, 'asc'))
+    );
+    this.restorani$.subscribe(restorani => {
+      this.filteredRestorani = restorani.filter(restoran =>
+        restoran.imeRestorana.toLowerCase().includes(this.filterText.toLowerCase())
+      );
+    });
+  }
+  prikaziNajboljeRestorane(): void {
+    this.restorani$ = this.restoranService.getNajboljeOcijenjeniRestorani().pipe(
       map(restorani => this.restoranService.sortRestorani(restorani, 'asc'))
     );
     this.restorani$.subscribe(restorani => {

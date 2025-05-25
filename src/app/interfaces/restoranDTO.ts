@@ -6,4 +6,6 @@ export interface RestoranDTO {
     postotakOpterecenosti: number;
     michelinZvijezdice: number;
     radnoVrijeme: Map<string, string>;
+    brojStolova: number;
+    godinaOsnivanja: number;
 }

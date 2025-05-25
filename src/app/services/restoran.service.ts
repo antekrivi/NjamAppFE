@@ -50,6 +50,20 @@ export class RestoranService {
       catchError(this.handleError<Restoran[]>('getRestorani', []))
     );
   }
+  getTrenutnoOtvoreniRestorani(): Observable<Restoran[]> {
+    return this.http.get<Restoran[]>(`${this.restoraniUrl}/trenutno-otvoreni`)
+    .pipe(
+      tap(_ => console.log('fetched restorani')),
+      catchError(this.handleError<Restoran[]>('getRestorani', []))
+    );
+  }
+  getNajboljeOcijenjeniRestorani(): Observable<Restoran[]> {
+    return this.http.get<Restoran[]>(`${this.restoraniUrl}/najbolji`)
+    .pipe(
+      tap(_ => console.log('fetched restorani')),
+      catchError(this.handleError<Restoran[]>('getRestorani', []))
+    );
+  }
 
   addRestoran(restoran: Restoran): Observable<Restoran> {
     return this.http.post<Restoran>(`${this.restoraniUrl}/spremi`, restoran, this.httpOptions);

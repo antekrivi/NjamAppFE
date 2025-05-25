@@ -2,6 +2,8 @@
   <label for="filter" class="filter-label">Filtriraj restorane:</label>
   <input id="filter" type="text" [(ngModel)]="filterText" placeholder="Unesite ime restorana" class="filter-input" />
   <button (click)="onPretraziClick()" class="filter-button">Pretraži</button>
+  <button (click)="prikaziOtvoreneRestorane()" class="filter-button">Prikaži otvorene restorane</button>
+  <button (click)="prikaziNajboljeRestorane()" class="filter-button">Prikaži najbolje restorane (5)</button>
   <button routerLink="/home" class="home-button">Idi na početnu stranicu</button>
 </div>
 <table>
@@ -44,6 +46,8 @@
   <label>Maksimalan broj narudžbi: <input type="number" formControlName="maxBrojNarudzbi" min="0"></label><br>
   <label>Michelin zvjezdice: <input type="number" formControlName="michelinZvijezdice" min="0" max="3"></label><br>
   <label>Trenutno otvoreno: <input type="checkbox" formControlName="trenutnoOtvoreno"></label><br>
+  <label>Broj stolova: <input type="number" formControlName="brojStolova" min="1"></label><br>
+  <label>Godina osnivanja: <input type="number" formControlName="godinaOsnivanja" max="2025"></label><br>
 
   <fieldset formGroupName="radnoVrijeme">
     <legend>Radno vrijeme:</legend>

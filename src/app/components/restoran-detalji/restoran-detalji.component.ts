@@ -3,6 +3,8 @@ import { Restoran } from '../../interfaces/restoran';
 import { ActivatedRoute } from '@angular/router';
 import { RestoranService } from '../../services/restoran.service';
 import { RestoranDTO } from '../../interfaces/restoranDTO';
+import { RecenzijaService } from '../../services/recenzija.service';
+import { Recenzija } from '../../interfaces/recenzija';
 
 @Component({
   selector: 'app-restoran-detalji',
@@ -16,15 +18,17 @@ export class RestoranDetaljiComponent implements OnInit {
   radnoVrijeme: {dan: string, vrijeme: string}[] = [];
   dani: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   restoranZaEdit!: Restoran;
+  recenzije!: Array<Recenzija>;
 
   constructor(private route: ActivatedRoute,
-    private restoranService: RestoranService){  }
+    private restoranService: RestoranService, private recenzijaService : RecenzijaService){  }
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.restoranId = id ? +id : 0;
     this.getRestoran(this.restoranId);
     this.getFullRestoran(this.restoranId);
+    this.getRecenzije();
   }
 
   getRestoran(id: number): void {
@@ -68,7 +72,21 @@ export class RestoranDetaljiComponent implements OnInit {
       ...this.restoran,
     }
     console.log('JSON koji šaljem:', updateaniRestoran);
-    this.restoranService.addRestoran(updateaniRestoran).subscribe(() =>{console.log('Restoran je uspješno dodan!');})
+    this.restoranService.addRestoran(updateaniRestoran).subscribe(() =>{
+      console.log('Restoran je uspješno dodan!');
+      alert('Restoran je uspješno dodan!');
+    })
   }
 
+  getRecenzije(): void {
+    this.recenzijaService.getRecenzijaByRestoranId(this.restoranId).subscribe({
+      next: (recenzije) => {
+        this.recenzije = recenzije;
+        console.log('Recenzije:', recenzije);
+      }
+      , error: (error) => {
+        console.error('Error fetching reviews:', error);
+      }
+    });
+  }
 }

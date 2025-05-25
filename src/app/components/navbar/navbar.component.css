@@ -1,0 +1,21 @@
+/* Osnovni izgled i boje */
+nav {
+  transition: background-color 0.3s ease;
+}
+
+/* Mobile button animation (ako želiš dodati ikonicu kasnije) */
+button[aria-controls="navbar-sticky"]::before {
+  content: '\2630'; /* Unicode za hamburger ikonu ☰ */
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+/* Email text za tamnu pozadinu */
+p {
+  color: #ffffff;
+}
+
+/* Hover efekti */
+button:hover {
+  cursor: pointer;
+}

@@ -12,4 +12,6 @@ export interface Restoran {
     michelinZvijezdice: number;
     kratkiOpis: string;
     postotakOpterecenosti: number;
+    brojStolova: number;
+    godinaOsnivanja: number;
 }
