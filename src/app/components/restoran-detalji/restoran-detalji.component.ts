@@ -39,6 +39,8 @@ export class RestoranDetaljiComponent implements OnInit {
   getRestoran(id: number): void {
     this.restoranService.getRestoranById(id).subscribe({
       next: (restoran) => {
+        restoran.radnoVrijeme = JSON.parse(restoran.radnoVrijeme);
+        
         this.restoran = restoran;
         console.log('Restoran:', restoran);
 

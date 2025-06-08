@@ -1,30 +1,37 @@
 <div class="filter-container">
-    <label for="filter" class="filter-label">Filtriraj restorane:</label>
-    <input id="filter" type="text" [(ngModel)]="filterText" placeholder="Unesite ime restorana" class="filter-input" />
-    <button (click)="onPretraziClick()" class="filter-button">Pretraži</button>
-    <button routerLink="/home" class="home-button">Idi na početnu stranicu</button>
+    <label for="filter" class="filter-label">{{ 'filter.label' | translate }}</label>
+    <input
+      id="filter"
+      type="text"
+      [(ngModel)]="filterText"
+      [placeholder]="'filter.placeholder' | translate"
+      class="filter-input"
+    />
+    <button (click)="onPretraziClick()" class="filter-button">{{ 'filter.search' | translate }}</button>
+    <button routerLink="/home" class="home-button">{{ 'filter.home' | translate }}</button>
 </div>
+
 <table>
-    <caption class="table-caption">Restorani</caption>
+    <caption class="table-caption">{{ 'restorani.title' | translate }}</caption>
     <thead>
         <tr>
-            <th>Ime</th>
-            <th>Otvoren</th>
-            <th>Opterećenost</th>
-            <th>Obriši:</th>
+            <th>{{ 'table.name' | translate }}</th>
+            <th>{{ 'table.open' | translate }}</th>
+            <th>{{ 'table.load' | translate }}</th>
+            <th>{{ 'table.delete' | translate }}</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let restoran of filteredRestorani" (click)="onRestoranClick(restoran)" class="restaurant-row">
             <td>{{ restoran.imeRestorana }}</td>
-            <td>{{ restoran.trenutnoOtvoreno ? 'Da' : 'Ne' }}</td>
+            <td>{{ restoran.trenutnoOtvoreno ? ('common.yes' | translate) : ('common.no' | translate) }}</td>
             <td>
                 <span class="status" [ngClass]="getOpterecenostClass(restoran.postotakOpterecenosti)">
                     {{ getOpterecenostText(restoran.postotakOpterecenosti) }}
                 </span>
             </td>
             <td>
-                <button (click)="onDeleteClick(restoran); $event.stopPropagation()" class="delete-button">Obriši</button>
+                <button (click)="onDeleteClick(restoran); $event.stopPropagation()" class="delete-button">{{ 'table.delete' | translate }}</button>
             </td>
         </tr>
     </tbody>

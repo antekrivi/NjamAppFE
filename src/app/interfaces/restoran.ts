@@ -4,7 +4,7 @@ export interface Restoran {
     adresa: string;
     brojTelefona: string;
     email: string;
-    radnoVrijeme: Map<string, string>;
+    radnoVrijeme: string;
     trenutnoOtvoreno: boolean;
     prosVrijemeDostave: number;
     prosOcjenaKupca: number;

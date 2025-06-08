@@ -1,0 +1,88 @@
+{
+  "language": {
+    "croatian": "Hrvatski",
+    "english": "Engleski"
+  },
+  "restorani": {
+    "title": "Restorani"
+  },
+  "filter": {
+    "label": "Filtriraj restorane:",
+    "placeholder": "Unesite ime restorana",
+    "search": "Pretraži",
+    "open": "Prikaži otvorene restorane",
+    "best5": "Prikaži najbolje restorane (5)",
+    "home": "Idi na početnu stranicu"
+  },
+  "table": {
+    "name": "Ime",
+    "open": "Otvoren",
+    "load": "Opterećenost",
+    "delete": "Obriši"
+  },
+  "form": {
+    "title": "Dodaj restoran:",
+    "name": "Ime restorana",
+    "address": "Adresa",
+    "phone": "Broj telefona",
+    "email": "Email",
+    "description": "Kratki opis",
+    "load": "Postotak opterećenosti",
+    "delivery": "Prosječno vrijeme dostave (min)",
+    "rating": "Prosječna ocjena kupca",
+    "orders": "Maksimalan broj narudžbi",
+    "michelin": "Michelin zvjezdice",
+    "open": "Trenutno otvoreno",
+    "tables": "Broj stolova",
+    "founded": "Godina osnivanja",
+    "workhours": "Radno vrijeme:",
+    "submit": "Dodaj restoran"
+  },
+  "days": {
+    "monday": "Ponedjeljak",
+    "tuesday": "Utorak",
+    "wednesday": "Srijeda",
+    "thursday": "Četvrtak",
+    "friday": "Petak",
+    "saturday": "Subota",
+    "sunday": "Nedjelja"
+  },
+  "details": {
+    "id": "ID",
+    "name": "Ime",
+    "address": "Adresa",
+    "currentlyOpen": "Trenutno otvoreno",
+    "loadPercentage": "Postotak opterećenosti",
+    "michelinStars": "Michelin zvjezdice",
+    "tablesCount": "Broj stolova",
+    "yearFounded": "Godina osnivanja",
+    "workingHours": "Radno vrijeme",
+    "reviews": "Recenzije",
+    "review": {
+      "title": "Naslov",
+      "rating": "Ocjena",
+      "text": "Tekst",
+      "edit": "Uredi",
+      "delete": "Obriši",
+      "editReview": "Uredi recenziju",
+      "saveChanges": "Spremi promjene",
+      "cancel": "Odustani",
+      "noReviews": "Još nema recenzija za ovaj restoran."
+    },
+    "editRestaurant": "Uredi restoran",
+    "save": "Spremi",
+    "cancelEdit": "Odustani"
+  },
+
+  "common": {
+    "yes": "Da",
+    "no": "Ne"
+  },
+  "initialScreen": {
+    "restaurantsList": "Idi na listu Restorana",
+    "michelinList": "Idi na listu Restorana s Michelin zvijezdicama",
+    "userInfo": "Korisnik info"
+  }
+
+
+}

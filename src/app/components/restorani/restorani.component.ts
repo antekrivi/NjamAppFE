@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RestoranDTO } from '../../interfaces/restoranDTO';
 import { get } from 'http';
+import { TranslateCompiler, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-restorani',
@@ -23,7 +24,10 @@ export class RestoraniComponent implements OnInit {
   restoranForm!: FormGroup;
 
   constructor(private restoranService: RestoranService, private router: Router,
-    private fb: FormBuilder) {
+    private fb: FormBuilder, translate: TranslateService) {
+      translate.setDefaultLang('hr');
+      translate.use('hr');
+
       this.restoranForm = this.fb.group({
         imeRestorana: ['', Validators.required],
         adresa: ['', Validators.required],

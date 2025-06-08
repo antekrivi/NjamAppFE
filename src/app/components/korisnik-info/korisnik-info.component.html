@@ -1,0 +1,10 @@
+<div *ngIf="userInfo; else loading">
+  <h2>Dobrodošao, {{ userInfo.username }}!</h2>
+  <p><strong>ID:</strong> {{ userInfo.id }}</p>
+  <p><strong>Uloge:</strong> {{ userInfo.roles.join(', ') }}</p>
+  <p>s</p>
+</div>
+
+<ng-template #loading>
+  <p>Učitavanje korisničkih podataka...</p>
+</ng-template>

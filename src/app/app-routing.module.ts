@@ -7,6 +7,7 @@ import { MichelinRestoraniComponent } from './components/michelin-restorani/mich
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { authGuard } from './guards/auth.guard';
+import { KorisnikInfoComponent } from './components/korisnik-info/korisnik-info.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'michelin-restorani', component: MichelinRestoraniComponent, canActivate: [authGuard]},
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent, canActivate: [authGuard]},
+  {path: 'korisnik', component: KorisnikInfoComponent, canActivate: [authGuard]},
 ];
 
 @NgModule({

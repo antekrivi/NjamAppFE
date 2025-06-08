@@ -1,105 +1,102 @@
 <div class="container">
   <div *ngIf="restoran" class="restoran-detalji">
-      <h2>{{ restoran.imeRestorana }}</h2>
-      <p><strong>ID:</strong> {{ restoran.id }}</p>
-      <p><strong>Ime:</strong> {{ restoran.imeRestorana }}</p>
-      <p><strong>Adresa:</strong> {{ restoran.adresa }}</p>
-      <p><strong>Trenutno otvoreno:</strong> {{ restoran.trenutnoOtvoreno ? 'Da' : 'Ne'}}</p>
-      <p><strong>Postotak opterećenosti:</strong> {{ restoran.postotakOpterecenosti }}%</p>
-      <p><strong>Broj zvjezdica:</strong> {{ restoran.michelinZvijezdice }}</p>
-      <p><strong>Broj stolova:</strong> {{ restoran.brojStolova }}</p>
-      <p><strong>Godina osnivanja:</strong> {{ restoran.godinaOsnivanja }}</p>
-      <p><strong>Radno vrijeme:</strong></p>
+      <h2>{{ 'details.name' | translate }}: {{ restoran.imeRestorana }}</h2>
+      <p><strong>{{ 'details.id' | translate }}:</strong> {{ restoran.id }}</p>
+      <p><strong>{{ 'details.name' | translate }}:</strong> {{ restoran.imeRestorana }}</p>
+      <p><strong>{{ 'details.address' | translate }}:</strong> {{ restoran.adresa }}</p>
+      <p><strong>{{ 'details.currentlyOpen' | translate }}:</strong> {{ restoran.trenutnoOtvoreno ? ('common.yes' | translate) : ('common.no' | translate) }}</p>
+      <p><strong>{{ 'details.loadPercentage' | translate }}:</strong> {{ restoran.postotakOpterecenosti }}%</p>
+      <p><strong>{{ 'details.michelinStars' | translate }}:</strong> {{ restoran.michelinZvijezdice }}</p>
+      <p><strong>{{ 'details.tablesCount' | translate }}:</strong> {{ restoran.brojStolova }}</p>
+      <p><strong>{{ 'details.yearFounded' | translate }}:</strong> {{ restoran.godinaOsnivanja }}</p>
+      <p><strong>{{ 'details.workingHours' | translate }}:</strong></p>
       <ul>
           <li *ngFor="let rv of radnoVrijeme">
-              {{ rv.dan }} : {{ rv.vrijeme}}
+              {{ rv.dan }} : {{ rv.vrijeme }}
           </li>
       </ul>
 
-        <div class="recenzije">
-          <h3>Recenzije</h3>
+      <div class="recenzije">
+          <h3>{{ 'details.reviews' | translate }}</h3>
           <div *ngIf="recenzije && recenzije.length > 0; else nemaRecenzija">
             <div *ngFor="let rec of recenzije" class="recenzija">
-              <h3><strong>Naslov:</strong> {{ rec.naslov }}</h3>
-              <p><strong>Ocjena:</strong> {{ rec.ocjena }}/5</p>
-              <p><strong>Tekst:</strong> {{ rec.tekst }}</p>
+              <h3><strong>{{ 'details.review.title' | translate }}:</strong> {{ rec.naslov }}</h3>
+              <p><strong>{{ 'details.review.rating' | translate }}:</strong> {{ rec.ocjena }}/5</p>
+              <p><strong>{{ 'details.review.text' | translate }}:</strong> {{ rec.tekst }}</p>
               
-              <button (click)="onEdit(rec)">Uredi</button>
-              <button (click)="onDelete(rec)">Obriši</button>
+              <button (click)="onEdit(rec)">{{ 'details.review.edit' | translate }}</button>
+              <button (click)="onDelete(rec)">{{ 'details.review.delete' | translate }}</button>
             </div>
           </div>
           <ng-template #nemaRecenzija>
-            <p>Još nema recenzija za ovaj restoran.</p>
+            <p>{{ 'details.review.noReviews' | translate }}</p>
           </ng-template>
-        </div>
+      </div>
 
-        <div *ngIf="recenzijaZaEdit" class="uredi-recenziju-forma">
-        <h3>Uredi recenziju</h3>
+      <div *ngIf="recenzijaZaEdit" class="uredi-recenziju-forma">
+        <h3>{{ 'details.review.editReview' | translate }}</h3>
         <form (ngSubmit)="onUpdateRecenzija()" #recenzijaForm="ngForm">
           <label>
-            Naslov:
+            {{ 'details.review.title' | translate }}:
             <input type="text" name="naslov" [(ngModel)]="recenzijaZaEdit.naslov" required />
           </label><br />
 
           <label>
-            Ocjena:
+            {{ 'details.review.rating' | translate }}:
             <input type="number" name="ocjena" [(ngModel)]="recenzijaZaEdit.ocjena" min="1" max="5" required />
           </label><br />
 
           <label>
-            Tekst:
+            {{ 'details.review.text' | translate }}:
             <textarea name="tekst" [(ngModel)]="recenzijaZaEdit.tekst" required></textarea>
           </label><br />
 
-          <button type="submit">Spremi promjene</button>
-          <button type="button" (click)="recenzijaZaEdit = null">Odustani</button>
+          <button type="submit">{{ 'details.review.saveChanges' | translate }}</button>
+          <button type="button" (click)="recenzijaZaEdit = null">{{ 'details.review.cancel' | translate }}</button>
         </form>
       </div>
-
-        
-        
-      
     </div>
-  <div *ngIf="restoran" class="uredi-forma">
-      <h2>Uredi restoran</h2>
+
+    <div *ngIf="restoran" class="uredi-forma">
+      <h2>{{ 'details.editRestaurant' | translate }}</h2>
       <form (ngSubmit)="onSubmit()" #restoranForm="ngForm">
         <label>
-          Ime restorana:
+          {{ 'form.name' | translate }}:
           <input type="text" name="imeRestorana" [(ngModel)]="restoran.imeRestorana" required />
         </label><br />
-    
+
         <label>
-          Adresa:
+          {{ 'form.address' | translate }}:
           <input type="text" name="adresa" [(ngModel)]="restoran.adresa" required />
         </label><br />
-    
+
         <label>
-          Trenutno otvoreno:
+          {{ 'form.open' | translate }}:
           <input type="checkbox" name="trenutnoOtvoreno" [(ngModel)]="restoran.trenutnoOtvoreno" />
         </label><br />
-    
+
         <label>
-          Postotak opterećenosti:
+          {{ 'form.load' | translate }}:
           <input type="number" name="postotakOpterecenosti" [(ngModel)]="restoran.postotakOpterecenosti" min="0" max="100" />
         </label><br />
-    
+
         <label>
-          Michelin zvjezdice:
+          {{ 'form.michelin' | translate }}:
           <input type="number" name="michelinZvijezdice" [(ngModel)]="restoran.michelinZvijezdice" min="0" max="3" />
         </label><br />
 
         <label>
-          Broj stolova:
+          {{ 'form.tables' | translate }}:
           <input type="number" name="brojStolova" [(ngModel)]="restoran.brojStolova" min="1" />
         </label><br />
 
         <label>
-          Godina osnivanja:
+          {{ 'form.founded' | translate }}:
           <input type="number" name="godinaOsnivanja" [(ngModel)]="restoran.godinaOsnivanja" min="1900" max="2100" />
         </label><br />
-    
+
         <fieldset>
-          <legend>Radno vrijeme:</legend>
+          <legend>{{ 'form.workhours' | translate }}</legend>
           <div *ngFor="let dan of dani; let i = index">
             <label>{{ dan }}:
               <input
@@ -110,9 +107,9 @@
             </label>
           </div>
         </fieldset><br />
-    
-        <button type="submit">Spremi</button>
-        <button routerLink="/restorani">Odustani</button>
+
+        <button type="submit">{{ 'details.save' | translate }}</button>
+        <button routerLink="/restorani">{{ 'details.cancelEdit' | translate }}</button>
       </form>
     </div>
 </div>

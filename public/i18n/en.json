@@ -1,0 +1,86 @@
+{
+  "language": {
+    "croatian": "Croatian",
+    "english": "English"
+  },
+  "restorani": {
+    "title": "Restaurants"
+  },
+  "filter": {
+    "label": "Filter restaurants:",
+    "placeholder": "Enter restaurant name",
+    "search": "Search",
+    "open": "Show open restaurants",
+    "best5": "Show top restaurants (5)",
+    "home": "Go to homepage"
+  },
+  "table": {
+    "name": "Name",
+    "open": "Open",
+    "load": "Load",
+    "delete": "Delete"
+  },
+  "form": {
+    "title": "Add restaurant:",
+    "name": "Restaurant name",
+    "address": "Address",
+    "phone": "Phone number",
+    "email": "Email",
+    "description": "Short description",
+    "load": "Load percentage",
+    "delivery": "Average delivery time (min)",
+    "rating": "Average customer rating",
+    "orders": "Maximum number of orders",
+    "michelin": "Michelin stars",
+    "open": "Currently open",
+    "tables": "Number of tables",
+    "founded": "Year founded",
+    "workhours": "Working hours:",
+    "submit": "Add restaurant"
+  },
+  "days": {
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday"
+  },
+  "details": {
+    "id": "ID",
+    "name": "Name",
+    "address": "Address",
+    "currentlyOpen": "Currently open",
+    "loadPercentage": "Load percentage",
+    "michelinStars": "Michelin stars",
+    "tablesCount": "Number of tables",
+    "yearFounded": "Year founded",
+    "workingHours": "Working hours",
+    "reviews": "Reviews",
+    "review": {
+      "title": "Title",
+      "rating": "Rating",
+      "text": "Text",
+      "edit": "Edit",
+      "delete": "Delete",
+      "editReview": "Edit review",
+      "saveChanges": "Save changes",
+      "cancel": "Cancel",
+      "noReviews": "No reviews for this restaurant yet."
+    },
+    "editRestaurant": "Edit restaurant",
+    "save": "Save",
+    "cancelEdit": "Cancel"
+  },
+  "common": {
+    "yes": "Yes",
+    "no": "No"
+  },
+
+  "initialScreen": {
+    "restaurantsList": "Go to Restaurants list",
+    "michelinList": "Go to Michelin starred Restaurants list",
+    "userInfo": "User info"
+  }
+}
