@@ -145,4 +145,14 @@ export class RestoraniComponent implements OnInit {
       );
     });
   }
+  prikaziNajpovoljnijeRestorane(): void {
+    this.restorani$ = this.restoranService.getNajpovoljnijeRestorane().pipe(
+      map(restorani => this.restoranService.sortRestorani(restorani, 'asc'))
+    );
+    this.restorani$.subscribe(restorani => {
+      this.filteredRestorani = restorani.filter(restoran =>
+        restoran.imeRestorana.toLowerCase().includes(this.filterText.toLowerCase())
+      );
+    });
+  }
 }

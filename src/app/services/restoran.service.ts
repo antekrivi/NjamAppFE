@@ -64,6 +64,14 @@ export class RestoranService {
       catchError(this.handleError<Restoran[]>('getRestorani', []))
     );
   }
+  getNajpovoljnijeRestorane(): Observable<Restoran[]> {
+    return this.http.get<Restoran[]>(`${this.restoraniUrl}/najpovoljniji`)
+    .pipe(
+      tap(_ => console.log('fetched restorani')),
+      catchError(this.handleError<Restoran[]>('getRestorani', []))
+    );
+  }
+  
 
   addRestoran(restoran: Restoran): Observable<Restoran> {
     return this.http.post<Restoran>(`${this.restoraniUrl}/spremi`, restoran, this.httpOptions);
@@ -119,4 +127,6 @@ export class RestoranService {
       return of(result as T);
     };
   }
+
+  
 }
